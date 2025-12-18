@@ -2,24 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =================================
-   PALET WARNA KHUSUS SUHAA.ID (DIKEMBANGKAN)
-   ================================= */
+/* ==========================================================================
+   1. SETTING DASAR & TYPOGRAPHY (BASE LAYER)
+   ========================================================================== */
+@layer base {
+  /* Smooth Scrolling & Font Rendering */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F9F9F7; /* Warna kertas lama */
+    color: #2D3748; /* Abu-abu gelap untuk readability */
+    line-height: 1.7; /* Sedikit dilonggarkan untuk kenyamanan baca */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #5D4037; /* Default cokelat tua */
+    margin-bottom: 0.75rem;
+  }
+
+  /* Custom Text Selection (Warna saat teks di-blok) */
+  ::selection {
+    background-color: #8D6E63; /* Cokelat Sedang */
+    color: #ffffff;
+  }
+}
+
+/* ==========================================================================
+   2. PALET WARNA KHUSUS SUHAA.ID (DIPERTAHANKAN & DIPERLUAS)
+   ========================================================================== */
 
 /* Cokelat Tua (Untuk Judul) */
 .text-brown-800 { color: #5D4037; }
 .bg-brown-800 { background-color: #5D4037; }
+.hover\:text-brown-800:hover { color: #5D4037; } /* Tambahan Hover */
 
 /* Cokelat Sedang (Untuk Tombol/Link) */
 .text-brown-600 { color: #8D6E63; }
 .bg-brown-600 { background-color: #8D6E63; }
 .border-brown-600 { border-color: #8D6E63; }
+.hover\:bg-brown-600:hover { background-color: #8D6E63; } /* Tambahan Hover */
 
 /* Cokelat Muda (Untuk Hover/Accent) */
 .text-brown-400 { color: #BCAAA4; }
 .bg-brown-400 { background-color: #BCAAA4; }
 
-/* Krem (Background) */
+/* Krem (Background Nuansa Kertas) */
 .bg-brown-50 { background-color: #EFEBE9; }
 .bg-brown-100 { background-color: #D7CCC8; }
 .bg-brown-200 { background-color: #BCAAA4; }
@@ -30,117 +67,231 @@
 .text-gray-100 { color: #F7FAFC; }
 .bg-gray-100 { background-color: #F7FAFC; }
 
-/* =================================
-   PENGATURAN FONT (DIKEMBANGKAN)
-   ================================= */
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Merriweather', serif;
-    font-weight: 700; /* Lebih tebal untuk heading */
-    line-height: 1.2;
-    color: #5D4037; /* Default cokelat tua */
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #F9F9F7; /* Warna kertas lama */
-    color: #2D3748; /* Abu-abu gelap untuk readability */
-    line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition untuk dark mode */
-}
-
-/* Dark Mode Overrides */
+/* ==========================================================================
+   3. DARK MODE OVERRIDES (DIKEMBANGKAN)
+   ========================================================================== */
 .dark body {
     background-color: #1A202C; /* Abu-abu gelap */
-    color: #F7FAFC; /* Abu-abu terang */
+    color: #E2E8F0; /* Abu-abu terang, lebih lembut dari putih murni */
 }
 
 .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    color: #F7FAFC; /* Heading putih di dark mode */
+    color: #F7FAFC;
 }
 
-/* =================================
-   STYLING LINK DAN TEKS (DIKEMBANGKAN)
-   ================================= */
+.dark .bg-white {
+    background-color: #2D3748; /* Card background di dark mode */
+}
 
-/* Biar link dalam artikel berwarna cokelat */
+.dark .border-gray-200 {
+    border-color: #4A5568;
+}
+
+/* ==========================================================================
+   4. STYLING LINK & KONTEN ARTIKEL (DIKEMBANGKAN)
+   ========================================================================== */
+
+/* Link Navbar */
+.nav-link {
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.nav-link:hover {
+    color: #FFE082; /* Kuning pastel */
+}
+/* Efek garis bawah animasi pada navbar */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #FFE082;
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Styling Konten Artikel (Prose) - Agar tulisan blog rapi */
 article a {
     color: #8D6E63;
     text-decoration: underline;
-    transition: color 0.3s ease;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 article a:hover {
     color: #5D4037;
+    background-color: #EFEBE9;
+    border-radius: 2px;
+}
+.dark article a { color: #F6E05E; }
+.dark article a:hover { color: #FAF089; background-color: transparent; }
+
+/* Blockquote (Kutipan) */
+article blockquote {
+    border-left: 4px solid #8D6E63;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #5D4037;
+    background-color: rgba(141, 110, 99, 0.1);
+    padding: 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 1.5rem 0;
+}
+.dark article blockquote {
+    border-left-color: #F6E05E;
+    color: #E2E8F0;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Link umum di navbar/footer */
-.nav-link {
-    color: #FFFFFF;
-    transition: color 0.3s ease;
-}
-.nav-link:hover {
-    color: #FFD54F; /* Kuning untuk hover */
+/* Lists (Daftar) */
+article ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
+article ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 1rem; }
+article li { margin-bottom: 0.5rem; }
+
+/* ==========================================================================
+   5. KOMPONEN UI (BUTTONS & FORMS - BARU)
+   ========================================================================== */
+@layer components {
+    /* Tombol Utama */
+    .btn-primary {
+        @apply bg-[#8D6E63] text-white px-4 py-2 rounded-md font-medium transition duration-300 shadow-sm hover:bg-[#6D4C41] hover:shadow-md active:transform active:scale-95;
+    }
+
+    /* Input Fields (Search/Login) */
+    .input-field {
+        @apply w-full px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#8D6E63] focus:border-transparent transition-all duration-300;
+    }
+    .dark .input-field {
+        @apply bg-gray-700 border-gray-600 text-gray-100 focus:ring-yellow-400;
+    }
 }
 
-/* =================================
-   ANIMASI DAN EFEK (BARU - UNTUK FITUR DINAMIS)
-   ================================= */
+/* ==========================================================================
+   6. CUSTOM SCROLLBAR (BARU)
+   ========================================================================== */
+/* Webkit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #F1F1F1;
+}
+::-webkit-scrollbar-thumb {
+    background: #BCAAA4; /* Cokelat Muda */
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #8D6E63; /* Cokelat Sedang */
+}
+.dark ::-webkit-scrollbar-track {
+    background: #2D3748;
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: #4A5568;
+}
 
-/* Fade In untuk Dropdown */
+/* ==========================================================================
+   7. ANIMASI DAN EFEK (DIPERTAHANKAN & DITAMBAH)
+   ========================================================================== */
+
+/* Fade In */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 .animate-fade-in {
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Slide In dari Kiri untuk Mobile Menu */
+/* Slide In Left (Mobile Menu) */
 @keyframes slideInLeft {
     from { transform: translateX(-100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
 }
 .animate-slide-in-left {
-    animation: slideInLeft 0.4s ease-out;
+    animation: slideInLeft 0.3s ease-out;
 }
 
-/* Bounce untuk Tombol */
+/* Slide Down (Untuk Dropdown & Search) - BARU */
+@keyframes slideDown {
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-down {
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Rotate In (Untuk Dark Mode Toggle) - BARU */
+@keyframes rotateIn {
+    from { transform: rotate(-90deg); opacity: 0; }
+    to { transform: rotate(0deg); opacity: 1; }
+}
+.animate-rotate-in {
+    animation: rotateIn 0.4s ease-out;
+}
+
+/* Bounce Custom */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
 }
 .animate-bounce-custom {
-    animation: bounce 1s infinite;
+    animation: bounce 2s infinite;
 }
 
-/* Pulse untuk Badge Notifikasi */
+/* Pulse Custom */
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
 }
 .animate-pulse-custom {
     animation: pulse 2s infinite;
 }
 
-/* Zoom In untuk Dropdown */
+/* Zoom In Dropdown */
 @keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
+    from { transform: scale(0.95); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
 .animate-zoom-in {
-    animation: zoomIn 0.3s ease-out;
+    animation: zoomIn 0.2s ease-out forwards;
 }
 
-/* =================================
-   STYLING KHUSUS UNTUK NAVBAR (BARU)
-   ================================= */
+/* ==========================================================================
+   8. STYLING NAVBAR KHUSUS (DIPERTAHANKAN & DIHALUSKAN)
+   ========================================================================== */
 
-/* Navbar Shrink Effect */
+/* Navbar Shrink Effect Logic */
+#navbar {
+    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 .navbar-shrink {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.75rem !important; /* py-3 */
+    padding-bottom: 0.75rem !important;
+    background-color: rgba(141, 110, 99, 0.95) !important; /* Sedikit transparan saat scroll */
+    backdrop-filter: blur(10px); /* Efek blur di belakang navbar */
 }
-.navbar-shrink #logo {
-    font-size: 1.5rem; /* Smaller logo
+.dark .navbar-shrink {
+    background-color: rgba(31, 41, 55, 0.95) !important;
+}
+
+/* Transisi Logo saat Scroll */
+#logo {
+    transition: font-size 0.3s ease, color 0.3s ease;
+}
+
+/* Badge Notifikasi */
+#notif-badge {
+    transition: transform 0.2s ease;
+}
+#notif-button:hover #notif-badge {
+    transform: scale(1.1);
+}
