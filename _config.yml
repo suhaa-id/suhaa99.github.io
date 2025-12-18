@@ -1,33 +1,44 @@
-# ==========================================
+# ============================================================
 # KONFIGURASI UTAMA SUHAA.ID
-# ==========================================
+# ============================================================
 title: "Suhaa.id"
-email: "anda@email.com"
-description: >- # Deskripsi untuk Google
-  Ruang refleksi pribadi tentang hukum, dinamika politik, 
-  dan jurnal rasa sehari-hari.
-author: "Suhaa"
+email: "priafahrian60@gmail.com"
+author: "Pria Fahrian Azfa"
+description: >-
+  Wadah aspirasi personal tentang hukum, dinamika politik, 
+  serta jurnal rasa sehari-hari.
 
-# ==========================================
-# PENGATURAN ALAMAT (JANGAN SALAH DISINI)
-# ==========================================
-url: "https://suhaa-id.github.io"
-baseurl: "/suhaa99.github.io" 
+# ============================================================
+# PENGATURAN ALAMAT WEBSITE (JANGAN DIUBAH LAGI)
+# ============================================================
+url: "https://suhaa-id.github.io" 
+baseurl: "" 
 
-# ==========================================
-# TEKNIS
-# ==========================================
+# ============================================================
+# PENGATURAN SOSIAL MEDIA (Opsional)
+# ============================================================
+twitter_username: suhaa.id
+github_username: suhaa-id
+instagram_username: suhaa.id
+
+# ============================================================
+# PENGATURAN TEKNIS & SEO (Agar Mudah Ditemukan Google)
+# ============================================================
 markdown: kramdown
 theme: minima
 plugins:
-  - jekyll-seo-tag
+  - jekyll-seo-tag  # Plugin wajib agar website muncul di Google
+  - jekyll-feed     # Agar orang bisa berlangganan tulisan Anda
+  - jekyll-sitemap  # Peta situs untuk mesin pencari
 
-# Format Link Tulisan (Tahun/Bulan/Judul)
+# Format Link Tulisan (Contoh: suhaa.id/2025/12/18/judul-tulisan/)
 collections:
   posts:
     permalink: /:year/:month/:day/:title/
 
+# Abaikan file sistem agar website lebih ringan
 exclude:
   - Gemfile
   - Gemfile.lock
-
+  - node_modules
+  - vendor
