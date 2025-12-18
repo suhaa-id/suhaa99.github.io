@@ -11,7 +11,7 @@ author: "Suhaa"
 # ==========================================
 # PENGATURAN ALAMAT (JANGAN SALAH DISINI)
 # ==========================================
-url: "https://priafahrian60-lgtm.github.io"
+url: "https://suhaa-id.github.io"
 baseurl: "/suhaa99.github.io" 
 
 # ==========================================
@@ -30,3 +30,4 @@ collections:
 exclude:
   - Gemfile
   - Gemfile.lock
+
