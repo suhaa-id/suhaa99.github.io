@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  
+  {% seo %}
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+</head>
+<body class="bg-[#F3F4F6] text-[#374151] font-sans flex flex-col min-h-screen">
+
+  {% include nav.html %}
+
+  <main class="flex-grow container mx-auto px-4 py-8 max-w-3xl">
+    {{ content }}
+  </main>
+
+  <footer class="bg-[#E5E7EB] text-center py-6 text-sm text-[#6B7280]">
+    <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
