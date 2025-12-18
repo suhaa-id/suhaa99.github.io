@@ -1,68 +1,146 @@
-<nav class="bg-[#8D6E63] text-white shadow-lg sticky top-0 z-50" role="navigation" aria-label="Main navigation">
-  <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center max-w-5xl">
-    
-    <!-- Logo/Brand -->
-    <a href="{{ site.baseurl }}/" class="text-2xl font-serif font-bold tracking-wide hover:text-gray-200 transition mb-4 md:mb-0" aria-label="Go to homepage">
-      Suhaa.id
-    </a>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    <!-- Desktop Menu -->
-    <ul class="hidden md:flex space-x-6 items-center text-sm font-medium">
-      <li><a href="{{ site.baseurl }}/" class="hover:text-yellow-200 transition" aria-label="Home">Beranda</a></li>
-      <li><a href="{{ site.baseurl }}/about" class="hover:text-yellow-200 transition" aria-label="About">Tentang</a></li>
-      
-      <li class="relative group cursor-pointer">
-        <span class="flex items-center hover:text-yellow-200 py-2" aria-haspopup="true" aria-expanded="false" role="button" tabindex="0">
-          Kategori ▾
-        </span>
-        <ul class="absolute right-0 mt-0 w-48 bg-white rounded-md shadow-xl py-2 hidden group-hover:block text-gray-800 z-10" role="menu">
-          <li><a href="{{ site.baseurl }}/category/tulisan-rasa" class="block px-4 py-2 hover:bg-[#F5F5F0] hover:text-[#8D6E63] transition" role="menuitem" aria-label="Tulisan Rasa category">☕ Tulisan Rasa</a></li>
-          <li><a href="{{ site.baseurl }}/category/opini" class="block px-4 py-2 hover:bg-[#F5F5F0] hover:text-[#8D6E63] transition" role="menuitem" aria-label="Opini category">🗣️ Opini</a></li>
-        </ul>
-      </li>
-    </ul>
+/* =================================
+   PALET WARNA KHUSUS SUHAA.ID (DIKEMBANGKAN)
+   ================================= */
 
-    <!-- Mobile Menu Button -->
-    <button class="md:hidden flex items-center text-white hover:text-yellow-200 transition" aria-label="Toggle mobile menu" aria-expanded="false" id="mobile-menu-button">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+/* Cokelat Tua (Untuk Judul) */
+.text-brown-800 { color: #5D4037; }
+.bg-brown-800 { background-color: #5D4037; }
 
-    <!-- Mobile Menu -->
-    <ul class="md:hidden flex flex-col space-y-4 mt-4 text-sm font-medium w-full" id="mobile-menu" style="display: none;">
-      <li><a href="{{ site.baseurl }}/" class="block py-2 hover:text-yellow-200 transition" aria-label="Home">Beranda</a></li>
-      <li><a href="{{ site.baseurl }}/about" class="block py-2 hover:text-yellow-200 transition" aria-label="About">Tentang</a></li>
-      
-      <li class="relative">
-        <span class="flex items-center py-2 cursor-pointer hover:text-yellow-200 transition" aria-haspopup="true" aria-expanded="false" role="button" tabindex="0" id="mobile-kategori-toggle">
-          Kategori ▾
-        </span>
-        <ul class="ml-4 mt-2 space-y-2 hidden" id="mobile-kategori-submenu" role="menu">
-          <li><a href="{{ site.baseurl }}/category/tulisan-rasa" class="block py-2 hover:text-yellow-200 transition" role="menuitem" aria-label="Tulisan Rasa category">☕ Tulisan Rasa</a></li>
-          <li><a href="{{ site.baseurl }}/category/opini" class="block py-2 hover:text-yellow-200 transition" role="menuitem" aria-label="Opini category">🗣️ Opini</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
+/* Cokelat Sedang (Untuk Tombol/Link) */
+.text-brown-600 { color: #8D6E63; }
+.bg-brown-600 { background-color: #8D6E63; }
+.border-brown-600 { border-color: #8D6E63; }
 
-<!-- Simple JavaScript for Mobile Menu Toggle (Add this in a <script> tag or external file) -->
-<script>
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileKategoriToggle = document.getElementById('mobile-kategori-toggle');
-  const mobileKategoriSubmenu = document.getElementById('mobile-kategori-submenu');
+/* Cokelat Muda (Untuk Hover/Accent) */
+.text-brown-400 { color: #BCAAA4; }
+.bg-brown-400 { background-color: #BCAAA4; }
 
-  mobileMenuButton.addEventListener('click', () => {
-    const isExpanded = mobileMenu.style.display === 'block';
-    mobileMenu.style.display = isExpanded ? 'none' : 'block';
-    mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-  });
+/* Krem (Background) */
+.bg-brown-50 { background-color: #EFEBE9; }
+.bg-brown-100 { background-color: #D7CCC8; }
+.bg-brown-200 { background-color: #BCAAA4; }
 
-  mobileKategoriToggle.addEventListener('click', () => {
-    const isExpanded = mobileKategoriSubmenu.classList.contains('hidden');
-    mobileKategoriSubmenu.classList.toggle('hidden');
-    mobileKategoriToggle.setAttribute('aria-expanded', !isExpanded);
-  });
-</script>
+/* Abu-Abu Netral untuk Dark Mode */
+.text-gray-800 { color: #2D3748; }
+.bg-gray-800 { background-color: #2D3748; }
+.text-gray-100 { color: #F7FAFC; }
+.bg-gray-100 { background-color: #F7FAFC; }
+
+/* =================================
+   PENGATURAN FONT (DIKEMBANGKAN)
+   ================================= */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700; /* Lebih tebal untuk heading */
+    line-height: 1.2;
+    color: #5D4037; /* Default cokelat tua */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F9F9F7; /* Warna kertas lama */
+    color: #2D3748; /* Abu-abu gelap untuk readability */
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition untuk dark mode */
+}
+
+/* Dark Mode Overrides */
+.dark body {
+    background-color: #1A202C; /* Abu-abu gelap */
+    color: #F7FAFC; /* Abu-abu terang */
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #F7FAFC; /* Heading putih di dark mode */
+}
+
+/* =================================
+   STYLING LINK DAN TEKS (DIKEMBANGKAN)
+   ================================= */
+
+/* Biar link dalam artikel berwarna cokelat */
+article a {
+    color: #8D6E63;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+article a:hover {
+    color: #5D4037;
+}
+
+/* Link umum di navbar/footer */
+.nav-link {
+    color: #FFFFFF;
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: #FFD54F; /* Kuning untuk hover */
+}
+
+/* =================================
+   ANIMASI DAN EFEK (BARU - UNTUK FITUR DINAMIS)
+   ================================= */
+
+/* Fade In untuk Dropdown */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Slide In dari Kiri untuk Mobile Menu */
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+.animate-slide-in-left {
+    animation: slideInLeft 0.4s ease-out;
+}
+
+/* Bounce untuk Tombol */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+.animate-bounce-custom {
+    animation: bounce 1s infinite;
+}
+
+/* Pulse untuk Badge Notifikasi */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.animate-pulse-custom {
+    animation: pulse 2s infinite;
+}
+
+/* Zoom In untuk Dropdown */
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.animate-zoom-in {
+    animation: zoomIn 0.3s ease-out;
+}
+
+/* =================================
+   STYLING KHUSUS UNTUK NAVBAR (BARU)
+   ================================= */
+
+/* Navbar Shrink Effect */
+.navbar-shrink {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.navbar-shrink #logo {
+    font-size: 1.5rem; /* Smaller logo
