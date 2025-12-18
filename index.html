@@ -1,40 +1,13 @@
----
-layout: default
-title: Beranda
----
+<nav class="bg-white sticky top-0 z-50 border-b border-gray-100">
+  <div class="container mx-auto px-6 py-5 flex justify-between items-center max-w-4xl">
+    
+    <a href="{{ site.baseurl }}/" class="text-xl font-bold tracking-tight text-black hover:opacity-70">
+      Suhaa.id
+    </a>
 
-<section class="text-center py-16 border-b border-gray-200 mb-10">
-  <h1 class="text-4xl md:text-5xl font-serif font-bold text-[#5D4037] mb-6">
-    Selamat Datang
-  </h1>
-  <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-    "Tempat saya menuangkan keresahan tentang hukum, mengamati gelombang politik, 
-    dan merayakan perasaan-perasaan kecil yang manusiawi."
-  </p>
-</section>
-
-<section>
-  <div class="flex items-center mb-8">
-    <h2 class="text-2xl font-serif font-bold text-[#5D4037] mr-4">Tulisan Terbaru</h2>
-    <div class="h-px bg-gray-300 flex-grow"></div>
+    <ul class="flex space-x-6 items-center text-sm">
+      <li><a href="{{ site.baseurl }}/">Beranda</a></li>
+      <li><a href="{{ site.baseurl }}/about">Tentang</a></li>
+      <li><a href="#" class="text-gray-400 cursor-not-allowed">Buku</a></li> </ul>
   </div>
-  
-  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-    {% for post in site.posts limit:6 %}
-      <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-        <span class="text-xs font-bold text-[#8D6E63] uppercase tracking-wider mb-2 block">
-          {{ post.categories | first }}
-        </span>
-        <h3 class="text-xl font-serif font-bold text-gray-800 mb-2">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h3>
-        <p class="text-gray-600 text-sm mb-4">{{ post.excerpt | strip_html | truncate: 100 }}</p>
-        <a href="{{ post.url | relative_url }}" class="text-[#8D6E63] font-bold text-sm hover:underline">Baca Selengkapnya →</a>
-      </article>
-    {% else %}
-      <div class="col-span-full text-center py-10 bg-white border border-dashed border-gray-300 rounded-lg">
-        <p class="text-gray-500 italic">Belum ada tulisan. Silakan buat file baru di folder _posts.</p>
-      </div>
-    {% endfor %}
-  </div>
-</section>
+</nav>
