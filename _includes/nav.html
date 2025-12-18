@@ -1,0 +1,20 @@
+<nav class="bg-[#D2B48C] shadow-md">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-4xl">
+    <a href="{{ "/" | relative_url }}" class="font-serif font-bold text-2xl text-white hover:text-[#F3F4F6]">
+      {{ site.title }}
+    </a>
+
+    <div class="space-x-6 text-white font-medium">
+      <a href="{{ "/" | relative_url }}" class="hover:text-gray-200">Beranda</a>
+      <a href="{{ "/about/" | relative_url }}" class="hover:text-gray-200">Tentang</a>
+      <span class="group relative inline-block cursor-pointer hover:text-gray-200">
+        Kategori ▾
+        <div class="absolute right-0 hidden group-hover:block bg-white shadow-lg rounded mt-2 w-40 text-[#374151] z-10">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Hukum</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Politik</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Jurnal Rasa</a>
+        </div>
+      </span>
+    </div>
+  </div>
+</nav>
