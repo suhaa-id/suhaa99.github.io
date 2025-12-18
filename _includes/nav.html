@@ -1,9 +1,22 @@
-<!-- Enhanced Navbar (Replaces {% include nav.html %}) -->
-<nav class="bg-[#8D6E63] text-white shadow-lg sticky top-0 z-50 transition-all duration-300" id="navbar" role="navigation" aria-label="Main navigation">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suhaa.id - Navbar Enhanced</title>
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome for Icons (optional, for more icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+<!-- Enhanced Navbar -->
+<nav class="bg-[#8D6E63] dark:bg-gray-800 text-white shadow-lg sticky top-0 z-50 transition-all duration-300" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center max-w-5xl">
     
     <!-- Logo/Brand with Shrink Effect -->
-    <a href="{{ site.baseurl }}/" class="text-2xl md:text-3xl font-serif font-bold tracking-wide hover:text-yellow-200 transition mb-4 md:mb-0" aria-label="Go to homepage" id="logo">
+    <a href="{{ site.baseurl }}/" class="text-2xl md:text-3xl font-serif font-bold tracking-wide hover:text-gray-200 transition mb-4 md:mb-0" aria-label="Go to homepage" id="logo">
       Suhaa.id
     </a>
 
@@ -15,7 +28,7 @@
       </button>
     </div>
 
-    <!-- Desktop Menu (Satu Instance per Item) -->
+    <!-- Desktop Menu -->
     <ul class="hidden md:flex space-x-6 items-center text-sm font-medium">
       <li><a href="{{ site.baseurl }}/" class="hover:text-yellow-200 transition" aria-label="Home">Beranda</a></li>
       <li><a href="{{ site.baseurl }}/about" class="hover:text-yellow-200 transition" aria-label="About">Tentang</a></li>
@@ -25,18 +38,18 @@
         <span class="flex items-center hover:text-yellow-200 py-2" aria-haspopup="true" aria-expanded="false" role="button" tabindex="0" id="kategori-toggle">
           Kategori ▾
         </span>
-        <ul class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-xl py-2 hidden group-hover:block text-gray-800 z-10 animate-fade-in" role="menu" id="kategori-menu">
-          <li class="px-4 py-2 font-semibold text-[#8D6E63]">Pilih Kategori</li>
-          <li><a href="{{ site.baseurl }}/category/tulisan-rasa" class="block px-4 py-2 hover:bg-[#F5F5F0] hover:text-[#8D6E63] transition" role="menuitem" aria-label="Tulisan Rasa category">☕ Tulisan Rasa</a></li>
-          <li><a href="{{ site.baseurl }}/category/opini" class="block px-4 py-2 hover:bg-[#F5F5F0] hover:text-[#8D6E63] transition" role="menuitem" aria-label="Opini category">🗣️ Opini</a></li>
+        <ul class="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-700 rounded-md shadow-xl py-2 hidden group-hover:block text-gray-800 dark:text-gray-200 z-10 animate-fade-in" role="menu" id="kategori-menu">
+          <li class="px-4 py-2 font-semibold text-[#8D6E63] dark:text-yellow-300">Pilih Kategori</li>
+          <li><a href="{{ site.baseurl }}/category/tulisan-rasa" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 hover:text-[#8D6E63] transition" role="menuitem" aria-label="Tulisan Rasa category">☕ Tulisan Rasa</a></li>
+          <li><a href="{{ site.baseurl }}/category/opini" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 hover:text-[#8D6E63] transition" role="menuitem" aria-label="Opini category">🗣️ Opini</a></li>
           <!-- New Submenu Item -->
           <li class="relative">
-            <span class="flex items-center px-4 py-2 hover:bg-[#F5F5F0] cursor-pointer" aria-haspopup="true" role="button" tabindex="0" id="sub-toggle">
+            <span class="flex items-center px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 cursor-pointer" aria-haspopup="true" role="button" tabindex="0" id="sub-toggle">
               📚 Lainnya ▸
             </span>
-            <ul class="absolute left-full top-0 mt-0 w-48 bg-white rounded-md shadow-xl py-2 hidden text-gray-800 z-20" id="sub-menu" role="menu">
-              <li><a href="{{ site.baseurl }}/category/tutorial" class="block px-4 py-2 hover:bg-[#F5F5F0] transition" role="menuitem">📖 Tutorial</a></li>
-              <li><a href="{{ site.baseurl }}/category/review" class="block px-4 py-2 hover:bg-[#F5F5F0] transition" role="menuitem">⭐ Review</a></li>
+            <ul class="absolute left-full top-0 mt-0 w-48 bg-white dark:bg-gray-700 rounded-md shadow-xl py-2 hidden text-gray-800 dark:text-gray-200 z-20" id="sub-menu" role="menu">
+              <li><a href="{{ site.baseurl }}/category/tutorial" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition" role="menuitem">📖 Tutorial</a></li>
+              <li><a href="{{ site.baseurl }}/category/review" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition" role="menuitem">⭐ Review</a></li>
             </ul>
           </li>
         </ul>
@@ -47,10 +60,10 @@
         <span class="flex items-center hover:text-yellow-200 py-2" aria-haspopup="true" aria-expanded="false" role="button" tabindex="0" id="user-toggle">
           <i class="fas fa-user mr-1"></i> Akun ▾
         </span>
-        <ul class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-xl py-2 hidden group-hover:block text-gray-800 z-10" role="menu" id="user-menu">
-          <li id="login-item"><a href="{{ site.baseurl }}/login" class="block px-4 py-2 hover:bg-[#F5F5F0] transition" role="menuitem">🔑 Masuk</a></li>
-          <li id="logout-item" style="display: none;"><a href="#" class="block px-4 py-2 hover:bg-[#F5F5F0] transition" role="menuitem" id="logout-link">🚪 Keluar</a></li>
-          <li><a href="{{ site.baseurl }}/profile" class="block px-4 py-2 hover:bg-[#F5F5F0] transition" role="menuitem">👤 Profil</a></li>
+        <ul class="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 rounded-md shadow-xl py-2 hidden group-hover:block text-gray-800 dark:text-gray-200 z-10" role="menu" id="user-menu">
+          <li id="login-item"><a href="{{ site.baseurl }}/login" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition" role="menuitem">🔑 Masuk</a></li>
+          <li id="logout-item" style="display: none;"><a href="#" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition" role="menuitem" id="logout-link">🚪 Keluar</a></li>
+          <li><a href="{{ site.baseurl }}/profile" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition" role="menuitem">👤 Profil</a></li>
         </ul>
       </li>
     </ul>
@@ -74,7 +87,7 @@
       <i class="fas fa-bars"></i>
     </button>
 
-    <!-- Mobile Menu (Satu Instance per Item, Tanpa Duplikasi) -->
+    <!-- Mobile Menu -->
     <div class="md:hidden flex flex-col space-y-4 mt-4 text-sm font-medium w-full" id="mobile-menu" style="display: none;">
       <!-- Mobile Search -->
       <div class="flex items-center space-x-2">
@@ -117,3 +130,148 @@
     </div>
   </div>
 </nav>
+
+<!-- Main Content Placeholder -->
+<main class="p-6">
+  <h1 class="text-3xl font-bold mb-4">Selamat Datang di Suhaa.id</h1>
+  <p>Konten utama situs Anda di sini. Navbar di atas telah diperkaya dengan fitur-fitur baru!</p>
+</main>
+
+<!-- JavaScript for Enhanced Functionality -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Elements
+    const navbar = document.getElementById('navbar');
+    const logo = document.getElementById('logo');
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    const mobileSearchInput = document.getElementById('mobile-search-input');
+    const mobileSearchButton = document.getElementById('mobile-search-button');
+    const kategoriToggle = document.getElementById('kategori-toggle');
+    const subToggle = document.getElementById('sub-toggle');
+    const subMenu = document.getElementById('sub-menu');
+    const userToggle = document.getElementById('user-toggle');
+    const logoutLink = document.getElementById('logout-link');
+    const mobileLogoutLink = document.getElementById('mobile-logout-link');
+    const notifButton = document.getElementById('notif-button');
+    const notifBadge = document.getElementById('notif-badge');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkIcon = document.getElementById('dark-icon');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileKategoriToggle = document.getElementById('mobile-kategori-toggle');
+    const mobileKategoriSubmenu = document.getElementById('mobile-kategori-submenu');
+    const mobileSubToggle = document.getElementById('mobile-sub-toggle');
+    const mobileSubSubmenu = document.getElementById('mobile-sub-submenu');
+    const mobileUserToggle = document.getElementById('mobile-user-toggle');
+    const mobileUserSubmenu = document.getElementById('mobile-user-submenu');
+
+    // Shrink Navbar on Scroll
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        navbar.classList.add('py-2');
+        logo.classList.remove('text-3xl');
+        logo.classList.add('text-2xl');
+      } else {
+        navbar.classList.remove('py-2');
+        logo.classList.remove('text-2xl');
+        logo.classList.add('text-3xl');
+      }
+    });
+
+    // Search Functionality (Simple Alert for Demo)
+    function handleSearch(query) {
+      if (query) alert(`Mencari: ${query}`);
+    }
+    searchButton.addEventListener('click', () => handleSearch(searchInput.value));
+    mobileSearchButton.addEventListener('click', () => handleSearch(mobileSearchInput.value));
+    searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(searchInput.value); });
+    mobileSearchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(mobileSearchInput.value); });
+
+    // Submenu Toggle for Desktop
+    subToggle.addEventListener('mouseenter', () => subMenu.classList.remove('hidden'));
+    subToggle.addEventListener('mouseleave', () => subMenu.classList.add('hidden'));
+
+    // User Login Simulation (Toggle Login/Logout)
+    let isLoggedIn = false; // Simulate login state
+    function toggleLogin() {
+      isLoggedIn = !isLoggedIn;
+      const loginItem = document.getElementById('login-item');
+      const logoutItem = document.getElementById('logout-item');
+      const mobileLoginItem = document.getElementById('mobile-login-item');
+      const mobileLogoutItem = document.getElementById('mobile-logout-item');
+      if (isLoggedIn) {
+        loginItem.style.display = 'none';
+        logoutItem.style.display = 'block';
+        mobileLoginItem.style.display = 'none';
+        mobileLogoutItem.style.display = 'block';
+        alert('Berhasil masuk!');
+      } else {
+        loginItem.style.display = 'block';
+        logoutItem.style.display = 'none';
+        mobileLoginItem.style.display = 'block';
+        mobileLogoutItem.style.display = 'none';
+        alert('Berhasil keluar!');
+      }
+    }
+    logoutLink.addEventListener('click', (e) => { e.preventDefault(); toggleLogin(); });
+    mobileLogoutLink.addEventListener('click', (e) => { e.preventDefault(); toggleLogin(); });
+
+    // Notification Badge Click (Simple Alert)
+    notifButton.addEventListener('click', () => {
+      notifBadge.textContent = '0';
+      alert('Notifikasi dibaca!');
+    });
+
+    // Dark Mode Toggle
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      darkIcon.classList.toggle('fa-moon');
+      darkIcon.classList.toggle('fa-sun');
+    });
+
+    // Mobile Menu Toggle
+    mobileMenuButton.addEventListener('click', () => {
+      const isExpanded = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = isExpanded ? 'none' : 'block';
+      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+    });
+
+    // Mobile Submenus Toggle
+    mobileKategoriToggle.addEventListener('click', () => {
+      const isExpanded = mobileKategoriSubmenu.style.display === 'block';
+      mobileKategoriSubmenu.style.display = isExpanded ? 'none' : 'block';
+      mobileKategoriToggle.setAttribute('aria-expanded', !isExpanded);
+    });
+    mobileSubToggle.addEventListener('click', () => {
+      const isExpanded = mobileSubSubmenu.style.display === 'block';
+      mobileSubSubmenu.style.display = isExpanded ? 'none' : 'block';
+    });
+    mobileUserToggle.addEventListener('click', () => {
+      const isExpanded = mobileUserSubmenu.style.display === 'block';
+      mobileUserSubmenu.style.display = isExpanded ? 'none' : 'block';
+      mobileUserToggle.setAttribute('aria-expanded', !isExpanded);
+    });
+
+    // Close Dropdowns on Outside Click (for Desktop)
+    document.addEventListener('click', (e) => {
+      if (!kategoriToggle.contains(e.target)) {
+        // Close kategori menu if needed (but hover handles it)
+      }
+    });
+  });
+</script>
+
+<!-- Custom CSS for Animations -->
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+</style>
+
+</body>
+</html>
