@@ -1,23 +1,49 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  {% seo %}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
-</head>
-<body class="bg-gray-100 text-gray-800 font-sans flex flex-col min-h-screen">
-  {% include nav.html %}
-  <main class="container mx-auto px-4 py-8 max-w-4xl flex-grow">
-    {{ content }}
-  </main>
-  <footer class="bg-gray-200 text-center py-6 text-sm text-gray-600 mt-auto">
-    <p>&copy; {{ site.time | date: "%Y" }} {{ site.author }}. Semua hak dilindungi.</p>
-  </footer>
-</body>
-</html>
+---
+layout: default
+title: Beranda
+---
+
+<section class="text-center py-12 md:py-20 border-b border-[#E0E0D0] mb-10">
+  <h1 class="text-4xl md:text-6xl font-serif font-bold text-[#5D4037] mb-6">
+    Selamat Datang
+  </h1>
+  <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-light">
+    "Tempat saya menuangkan keresahan tentang hukum, mengamati gelombang politik, 
+    dan merayakan perasaan-perasaan kecil yang manusiawi."
+  </p>
+</section>
+
+<section>
+  <div class="flex items-center mb-8">
+    <h2 class="text-2xl font-serif font-bold text-[#5D4037] mr-4">Tulisan Terbaru</h2>
+    <div class="h-px bg-[#D6D6C2] flex-grow"></div>
+  </div>
+  
+  {% if site.posts.size > 0 %}
+  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    {% for post in site.posts limit:6 %}
+      <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition duration-300 flex flex-col h-full">
+        <div class="mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#8D6E63] bg-[#EFEBE9] px-3 py-1 rounded-full">
+            {{ post.categories | first }}
+          </span>
+        </div>
+        <h3 class="text-xl font-serif font-bold text-gray-800 mb-3 leading-tight">
+          <a href="{{ post.url | relative_url }}" class="hover:text-[#8D6E63] transition">{{ post.title }}</a>
+        </h3>
+        <p class="text-gray-600 mb-4 text-sm flex-grow leading-relaxed">
+          {{ post.excerpt | strip_html | truncate: 120 }}
+        </p>
+        <div class="mt-auto pt-4 border-t border-gray-50 flex justify-between items-center text-xs text-gray-500">
+          <span>{{ post.date | date: "%d %B %Y" }}</span>
+          <a href="{{ post.url | relative_url }}" class="text-[#8D6E63] font-bold hover:underline">BACA SELENGKAPNYA →</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  {% else %}
+    <div class="text-center py-10 bg-white rounded-lg border border-dashed border-gray-300">
+      <p class="text-gray-500">Belum ada tulisan. Silakan buat file baru di folder _posts.</p>
+    </div>
+  {% endif %}
+</section>
