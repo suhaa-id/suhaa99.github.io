@@ -1,0 +1,14 @@
+/* Mengatur font agar lebih spesifik */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Memastikan warna teks tidak hitam pekat (Pitch Black) */
+p {
+    color: #374151; /* Cool Gray 700 */
+    line-height: 1.8; /* Jarak antar baris agar enak dibaca */
+}
