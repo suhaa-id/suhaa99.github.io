@@ -5,155 +5,210 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   {% seo %}
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
 </head>
-<body class="bg-[#F9F9F7] text-gray-800 font-sans flex flex-col min-h-screen transition-colors duration-300" id="body">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-  <nav class="bg-[#8D6E63] text-white shadow-lg sticky top-0 z-50 transition-all duration-300" id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center max-w-5xl">
+<nav class="bg-[#8D6E63] dark:bg-gray-800 text-white shadow-lg sticky top-0 z-50 transition-all duration-300" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center max-w-5xl">
+    
+    <a href="{{ site.baseurl }}/" class="text-2xl md:text-3xl font-serif font-bold tracking-wide hover:text-gray-200 transition mb-4 md:mb-0" aria-label="Go to homepage" id="logo">
+      Suhaa.id
+    </a>
+
+    <div class="hidden md:flex items-center space-x-2 mb-4 md:mb-0">
+      <input type="text" placeholder="Cari artikel..." class="px-3 py-1 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300" id="search-input">
+      <button class="bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded-md transition" aria-label="Search" id="search-button">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+
+    <ul class="hidden md:flex space-x-6 items-center text-sm font-medium">
+      <li><a href="{{ site.baseurl }}/" class="hover:text-yellow-200 transition" aria-label="Home">Beranda</a></li>
+      <li><a href="{{ site.baseurl }}/about" class="hover:text-yellow-200 transition" aria-label="About">Tentang</a></li>
       
-      <a href="{{ site.baseurl }}/" class="text-2xl md:text-3xl font-serif font-bold tracking-wide hover:text-gray-200 transition mb-4 md:mb-0" aria-label="Go to homepage" id="logo">
-        Suhaa.id
-      </a>
+      <li class="relative group cursor-pointer">
+        <span class="flex items-center hover:text-yellow-200 py-2" id="kategori-toggle">
+          Kategori ▾
+        </span>
+        <ul class="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-700 rounded-md shadow-xl py-2 hidden group-hover:block text-gray-800 dark:text-gray-200 z-10 animate-fade-in" id="kategori-menu">
+          <li class="px-4 py-2 font-semibold text-[#8D6E63] dark:text-yellow-300">Pilih Kategori</li>
+          <li><a href="{{ site.baseurl }}/category/tulisan-rasa" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 hover:text-[#8D6E63] transition">☕ Tulisan Rasa</a></li>
+          <li><a href="{{ site.baseurl }}/category/opini" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 hover:text-[#8D6E63] transition">🗣️ Opini</a></li>
+          <li class="relative">
+            <span class="flex items-center px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 cursor-pointer" id="sub-toggle">
+              📚 Lainnya ▸
+            </span>
+            <ul class="absolute left-full top-0 mt-0 w-48 bg-white dark:bg-gray-700 rounded-md shadow-xl py-2 hidden text-gray-800 dark:text-gray-200 z-20" id="sub-menu">
+              <li><a href="{{ site.baseurl }}/category/tutorial" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition">📖 Tutorial</a></li>
+              <li><a href="{{ site.baseurl }}/category/review" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition">⭐ Review</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
 
-      <div class="hidden md:flex items-center space-x-2 mb-4 md:mb-0">
-        <input type="text" placeholder="Cari artikel..." class="px-3 py-1 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300" id="search-input">
-        <button class="bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded-md transition" aria-label="Search" id="search-button">
+      <li class="relative group cursor-pointer">
+        <span class="flex items-center hover:text-yellow-200 py-2" id="user-toggle">
+          <i class="fas fa-user mr-1"></i> Akun ▾
+        </span>
+        <ul class="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 rounded-md shadow-xl py-2 hidden group-hover:block text-gray-800 dark:text-gray-200 z-10" id="user-menu">
+          <li id="login-item"><a href="{{ site.baseurl }}/login" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition">🔑 Masuk</a></li>
+          <li id="logout-item" style="display: none;"><a href="#" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition" id="logout-link">🚪 Keluar</a></li>
+          <li><a href="{{ site.baseurl }}/profile" class="block px-4 py-2 hover:bg-[#F5F5F0] dark:hover:bg-gray-600 transition">👤 Profil</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="flex items-center space-x-4 mb-4 md:mb-0">
+      <button class="relative hover:text-yellow-200 transition" id="notif-button">
+        <i class="fas fa-bell"></i>
+        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1" id="notif-badge">3</span>
+      </button>
+      <button class="hover:text-yellow-200 transition" id="dark-mode-toggle">
+        <i class="fas fa-moon" id="dark-icon"></i>
+      </button>
+    </div>
+
+    <button class="md:hidden flex items-center text-white hover:text-yellow-200 transition" id="mobile-menu-button">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="md:hidden flex flex-col space-y-4 mt-4 text-sm font-medium w-full hidden" id="mobile-menu">
+      <div class="flex items-center space-x-2">
+        <input type="text" placeholder="Cari..." class="flex-1 px-3 py-1 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300" id="mobile-search-input">
+        <button class="bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded-md transition" id="mobile-search-button">
           <i class="fas fa-search"></i>
         </button>
       </div>
-
-      <ul class="hidden md:flex space-x-6 items-center text-sm font-medium">
-        <li><a href="{{ site.baseurl }}/" class="hover:text-yellow-200 transition">Beranda</a></li>
-        <li><a href="{{ site.baseurl }}/about" class="hover:text-yellow-200 transition">Tentang</a></li>
-        
-        <li class="relative group cursor-pointer">
-          <span class="flex items-center hover:text-yellow-200 py-2">
-            Kategori ▾
-          </span>
-          <ul class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-xl py-2 hidden group-hover:block text-gray-800 z-10 animate-fade-in">
-            <li class="px-4 py-2 font-semibold text-[#8D6E63]">Pilih Kategori</li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-[#F5F5F0]">☕ Tulisan Rasa</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-[#F5F5F0]">🗣️ Opini</a></li>
-          </ul>
-        </li>
-
-        <li class="relative group cursor-pointer">
-          <span class="flex items-center hover:text-yellow-200 py-2">
-            <i class="fas fa-user mr-1"></i> Akun ▾
-          </span>
-          <ul class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-xl py-2 hidden group-hover:block text-gray-800 z-10">
-            <li><a href="#" class="block px-4 py-2 hover:bg-[#F5F5F0]">🔑 Masuk</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-[#F5F5F0]">👤 Profil</a></li>
-          </ul>
-        </li>
-      </ul>
-
-      <div class="flex items-center space-x-4 mb-4 md:mb-0">
-        <button class="relative hover:text-yellow-200 transition">
-          <i class="fas fa-bell"></i>
-          <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">3</span>
-        </button>
-        <button class="hover:text-yellow-200 transition" id="dark-mode-toggle">
-          <i class="fas fa-moon" id="dark-icon"></i>
-        </button>
-      </div>
-
-      <button class="md:hidden flex items-center text-white hover:text-yellow-200 transition" id="mobile-menu-button">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <div class="md:hidden flex flex-col space-y-4 mt-4 text-sm font-medium w-full hidden" id="mobile-menu">
-        <div class="flex items-center space-x-2">
-          <input type="text" placeholder="Cari..." class="flex-1 px-3 py-1 rounded-md text-gray-800 focus:outline-none">
-          <button class="bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded-md transition">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-        <a href="{{ site.baseurl }}/" class="block py-2 hover:text-yellow-200">Beranda</a>
-        <a href="{{ site.baseurl }}/about" class="block py-2 hover:text-yellow-200">Tentang</a>
-        <a href="#" class="block py-2 hover:text-yellow-200">Kategori</a>
-      </div>
-    </div>
-  </nav>
-
-  <main class="container mx-auto px-6 py-10 max-w-4xl flex-grow">
-    {{ content }}
-  </main>
-
-  <footer class="bg-[#EBEBE0] text-center py-12 mt-auto border-t border-[#D6D6C2]">
-    <div class="container mx-auto px-4">
-      <h4 class="font-serif text-[#5D4037] font-bold text-2xl mb-2 tracking-wide">Suhaa.id</h4>
-      <p class="text-sm text-gray-500 mb-6 italic">Menulis untuk merawat kewarasan.</p>
+      <a href="{{ site.baseurl }}/" class="block py-2 hover:text-yellow-200 transition">Beranda</a>
+      <a href="{{ site.baseurl }}/about" class="block py-2 hover:text-yellow-200 transition">Tentang</a>
       
-      <div class="mb-8">
-        <a href="https://wa.me/6285337220672" target="_blank" class="inline-flex items-center bg-white border border-gray-300 rounded-full px-6 py-2 text-sm font-medium text-gray-700 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition duration-300 shadow-sm">
-          Hubungi: 0853-3372-20672
-        </a>
+      <div>
+        <span class="flex items-center py-2 cursor-pointer hover:text-yellow-200 transition" id="mobile-kategori-toggle">
+          Kategori ▾
+        </span>
+        <ul class="ml-4 mt-2 space-y-2 hidden" id="mobile-kategori-submenu">
+          <li><a href="{{ site.baseurl }}/category/tulisan-rasa" class="block py-2 hover:text-yellow-200 transition">☕ Tulisan Rasa</a></li>
+          <li><a href="{{ site.baseurl }}/category/opini" class="block py-2 hover:text-yellow-200 transition">🗣️ Opini</a></li>
+          <li>
+            <span class="flex items-center py-2 cursor-pointer hover:text-yellow-200 transition" id="mobile-sub-toggle">📚 Lainnya ▸</span>
+            <ul class="ml-4 mt-2 space-y-2 hidden" id="mobile-sub-submenu">
+              <li><a href="{{ site.baseurl }}/category/tutorial" class="block py-2 hover:text-yellow-200 transition">📖 Tutorial</a></li>
+              <li><a href="{{ site.baseurl }}/category/review" class="block py-2 hover:text-yellow-200 transition">⭐ Review</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
 
-      <p class="text-xs text-gray-400">
-        &copy; {{ site.time | date: "%Y" }} {{ site.title }}. Hak Cipta Dilindungi.
-      </p>
+      <div>
+        <span class="flex items-center py-2 cursor-pointer hover:text-yellow-200 transition" id="mobile-user-toggle">👤 Akun ▾</span>
+        <ul class="ml-4 mt-2 space-y-2 hidden" id="mobile-user-submenu">
+          <li id="mobile-login-item"><a href="{{ site.baseurl }}/login" class="block py-2 hover:text-yellow-200 transition">🔑 Masuk</a></li>
+          <li id="mobile-logout-item" style="display: none;"><a href="#" class="block py-2 hover:text-yellow-200 transition" id="mobile-logout-link">🚪 Keluar</a></li>
+          <li><a href="{{ site.baseurl }}/profile" class="block py-2 hover:text-yellow-200 transition">👤 Profil</a></li>
+        </ul>
+      </div>
     </div>
-  </footer>
+  </div>
+</nav>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Definisi Elemen
-      const navbar = document.getElementById('navbar');
-      const logo = document.getElementById('logo');
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const darkModeToggle = document.getElementById('dark-mode-toggle');
-      const darkIcon = document.getElementById('dark-icon');
-      const body = document.getElementById('body');
+<main class="container mx-auto px-6 py-10 max-w-5xl flex-grow">
+  {{ content }}
+</main>
 
-      // 1. Efek Scroll Navbar (Mengecil saat scroll)
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-          navbar.classList.add('py-2');
-          logo.classList.remove('text-3xl');
-          logo.classList.add('text-2xl');
-        } else {
-          navbar.classList.remove('py-4'); // Reset ke awal
-          logo.classList.remove('text-2xl');
-          logo.classList.add('text-3xl');
-        }
-      });
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Definisi Elemen
+    const navbar = document.getElementById('navbar');
+    const logo = document.getElementById('logo');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkIcon = document.getElementById('dark-icon');
+    
+    // Elemen Mobile Submenu
+    const mobileKategoriToggle = document.getElementById('mobile-kategori-toggle');
+    const mobileKategoriSubmenu = document.getElementById('mobile-kategori-submenu');
+    const mobileSubToggle = document.getElementById('mobile-sub-toggle');
+    const mobileSubSubmenu = document.getElementById('mobile-sub-submenu');
+    const mobileUserToggle = document.getElementById('mobile-user-toggle');
+    const mobileUserSubmenu = document.getElementById('mobile-user-submenu');
 
-      // 2. Tombol Menu Mobile
-      if(mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', function() {
-           mobileMenu.classList.toggle('hidden');
-        });
-      }
-
-      // 3. Dark Mode Sederhana
-      if(darkModeToggle) {
-        darkModeToggle.addEventListener('click', function() {
-          body.classList.toggle('bg-gray-900');
-          body.classList.toggle('text-white');
-          
-          // Ganti Icon
-          if(body.classList.contains('bg-gray-900')) {
-             darkIcon.classList.remove('fa-moon');
-             darkIcon.classList.add('fa-sun');
-          } else {
-             darkIcon.classList.add('fa-moon');
-             darkIcon.classList.remove('fa-sun');
-          }
-        });
+    // 1. Scroll Effect
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        navbar.classList.add('py-2');
+        logo.classList.remove('text-3xl');
+        logo.classList.add('text-2xl');
+      } else {
+        navbar.classList.remove('py-2');
+        logo.classList.remove('text-2xl');
+        logo.classList.add('text-3xl');
       }
     });
-  </script>
+
+    // 2. Mobile Menu Toggle
+    if(mobileMenuButton) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // 3. Dark Mode
+    if(darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        // Toggle Icon
+        if(document.body.classList.contains('dark')) {
+           darkIcon.classList.remove('fa-moon');
+           darkIcon.classList.add('fa-sun');
+        } else {
+           darkIcon.classList.add('fa-moon');
+           darkIcon.classList.remove('fa-sun');
+        }
+      });
+    }
+
+    // 4. Mobile Submenus Logic
+    if(mobileKategoriToggle) {
+      mobileKategoriToggle.addEventListener('click', () => {
+         mobileKategoriSubmenu.classList.toggle('hidden');
+      });
+    }
+    if(mobileSubToggle) {
+      mobileSubToggle.addEventListener('click', (e) => {
+         e.stopPropagation(); // Mencegah parent tertutup
+         mobileSubSubmenu.classList.toggle('hidden');
+      });
+    }
+    if(mobileUserToggle) {
+      mobileUserToggle.addEventListener('click', () => {
+         mobileUserSubmenu.classList.toggle('hidden');
+      });
+    }
+
+    // 5. Login/Logout Simulation (Opsional)
+    const logoutLink = document.getElementById('logout-link');
+    if(logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Berhasil Keluar!');
+            // Logika logout disini
+        });
+    }
+  });
+</script>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+</style>
 </body>
 </html>
